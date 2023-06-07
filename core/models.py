@@ -3,6 +3,9 @@ from django.db import models
 
 class Group(models.Model):
     name = models.CharField(max_length=100)
+    # related name - это имя, которое будет использоваться для обращения к связанным объектам
+    # так как в модели Student мы указали group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    # то в модели Group мы можем обращаться к связанным объектам через related_name='students'
 
     def __str__(self):
         return self.name
@@ -36,7 +39,7 @@ class Mark(models.Model):
     mark = models.IntegerField()
 
     def __str__(self):
-        return f'{self.value}'
+        return f'{self.mark}'
     
 
 class Raspisanie(models.Model):
