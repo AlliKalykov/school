@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'django_filters',
+
     'drf_spectacular',
     'drf_spectacular_sidecar',  # required for Django collectstatic discovery
 
@@ -142,6 +144,13 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 

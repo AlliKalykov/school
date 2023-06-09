@@ -8,6 +8,7 @@ class GroupAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'view_students', 'view_raspisanie']
     list_display_links = ['id', 'name']
     search_fields = ['name']
+    # list_filter = ['name']
 
     def view_students(self, obj):
         return format_html(f'<a href="/admin/core/student/?group__id__exact={obj.id}">{obj.student_set.count()} студентов</a>')
@@ -19,8 +20,20 @@ class GroupAdmin(admin.ModelAdmin):
     view_raspisanie.short_description = 'Расписание'
 
 
-admin.site.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title']
+    list_display_links = ['id', 'title']
+    search_fields = ['title']
+
+
+class RaspisanieAdmin(admin.ModelAdmin):
+    list_display = ['id', 'subject', 'teacher', 'group']
+    list_display_links = ['id', 'subject', 'teacher', 'group']
+    search_fields = ['subject', 'teacher', 'group']
+    list_filter = ['subject', 'teacher', 'group']
+
+admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Teacher)
 admin.site.register(Student)
 admin.site.register(Mark)
-admin.site.register(Raspisanie)
+admin.site.register(Raspisanie, RaspisanieAdmin)
