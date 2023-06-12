@@ -7,10 +7,13 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAu
 from .models import Group, Student, Mark
 from .serializers import GroupSerializer, StudentSerializer, MarkCreateSerializer
 from .permissions import IsTeacher, IsStudent
+from .paginations import CustomPagination
 
 class GroupViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsTeacher]
+
+    pagination_class = CustomPagination
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
