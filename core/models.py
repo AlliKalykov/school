@@ -49,3 +49,12 @@ class Raspisanie(models.Model):
 
     def __str__(self):
         return f'{self.subject} {self.group}'
+
+
+class Feedback(models.Model):
+    telegram_id = models.CharField(max_length=100)
+    text = models.TextField()
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+    rate = models.SmallIntegerField()

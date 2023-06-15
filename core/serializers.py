@@ -1,5 +1,13 @@
-from .models import Group, Student, Mark
+from .models import Group, Student, Mark, Feedback
 from rest_framework import serializers
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ('id', 'telegram_id', 'text', 'first_name', 'last_name', 'date', 'rate')
+        read_only_fields = ('id', 'date')
+        
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
