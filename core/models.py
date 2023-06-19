@@ -58,3 +58,13 @@ class Feedback(models.Model):
     last_name = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     rate = models.SmallIntegerField()
+
+
+class Order(models.Model):
+    telegram_id = models.CharField(max_length=100) # telegram.message
+    telegram_username = models.CharField(max_length=100, null=True, blank=True) # telegram.message
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    order_text = models.TextField()
+    status = models.BooleanField(default=False) # не отправляете заказ
+    date = models.DateTimeField(auto_now_add=True)

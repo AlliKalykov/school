@@ -37,9 +37,22 @@ class RaspisanieAdmin(admin.ModelAdmin):
     list_filter = ["subject", "teacher", "group"]
 
 
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "telegram_id",
+        "text",
+        "first_name",
+        "last_name",
+        "date",
+        "rate",
+    ]
+    search_fields = ["text", "first_name", "last_name"]
+
+
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Teacher)
 admin.site.register(Student)
 admin.site.register(Mark)
 admin.site.register(Raspisanie, RaspisanieAdmin)
-admin.site.register(Feedback)
+admin.site.register(Feedback, FeedbackAdmin)
