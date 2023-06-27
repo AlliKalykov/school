@@ -14,6 +14,6 @@ RUN pip install -r req.txt
 
 COPY . /app
 
-# run the command to start runserver
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# # run the command to start runserver
+# EXPOSE 8000
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

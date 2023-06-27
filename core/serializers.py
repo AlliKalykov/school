@@ -33,3 +33,10 @@ class MarkCreateSerializer(serializers.ModelSerializer):
         representation['student'] = StudentSerializer(instance.student).data
         # representation['subject'] = serializers.StringRelatedField().data
         return representation
+    
+
+class MailSerializer(serializers.Serializer):
+    subject = serializers.CharField()
+    message = serializers.CharField()
+    from_email = serializers.EmailField()
+    recipient_list = serializers.ListField(child=serializers.EmailField())

@@ -95,14 +95,13 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': 
+        'NAME': env("POSTGRES_DB"),
+        'USER': env("POSTGRES_USER"),
+        'PASSWORD': env("POSTGRES_PASSWORD"),
+        'HOST': env("POSTGRES_HOST"),
+        'PORT': env("POSTGRES_PORT")
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -177,3 +176,14 @@ SPECTACULAR_SETTINGS = {
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
 }
+
+
+EMAIL_HOST = 'smtp.mail.ru'  # smtp сервер для отправки писем
+EMAIL_PORT = 2525  # порт smtp сервера
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")  # логин для smtp сервера
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD") # "pMIfBitiR82%"  # пароль для smtp сервера
+EMAIL_USE_TLS = True  # использовать tls шифрование для smtp
+EMAIL_USE_SSL = False  # использовать ssl шифрование для smtp
+
+SERVER_EMAIL = EMAIL_HOST_USER  # отправитель писем
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # отправитель писем

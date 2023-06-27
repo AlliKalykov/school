@@ -8,17 +8,15 @@ services: # сервисы (отдельные проекты/приложени
       - .env # файл с переменными окружения
     volumes:
       - postgres_data:/var/lib/postgresql/data/ # путь к папке с данными в контейнере
-      
   web: # имя сервиса (django-приложение)
     build: . # путь к Dockerfile
     command: >
       bash -c "python manage.py migrate &&
                python manage.py runserver 0.0.0.0:8000"
-
     volumes:
       - project:/usr/src/app # путь к папке с проектом в контейнере
     ports:
-      - "8000:8000" # проброс портов (локальный:контейнера)
+      - "8002:8000" # проброс портов (локальный:контейнера)
     depends_on:
       - db # зависимость от сервиса db
 
