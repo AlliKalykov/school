@@ -40,3 +40,13 @@ class MailSerializer(serializers.Serializer):
     message = serializers.CharField()
     from_email = serializers.EmailField()
     recipient_list = serializers.ListField(child=serializers.EmailField())
+
+
+class EmailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    token = serializers.CharField()
+    password = serializers.CharField()
+    password2 = serializers.CharField()

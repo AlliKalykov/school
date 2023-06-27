@@ -68,3 +68,13 @@ class Order(models.Model):
     order_text = models.TextField()
     status = models.BooleanField(default=False) # не отправляете заказ
     date = models.DateTimeField(auto_now_add=True)
+
+
+# model для восстановления пароля
+class ResetPassword(models.Model):
+    email = models.EmailField()
+    token = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f'{self.email} - {self.token}'

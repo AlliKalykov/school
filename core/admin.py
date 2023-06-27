@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Group, Subject, Teacher, Student, Mark, Raspisanie, Feedback
+from .models import Group, Subject, Teacher, Student, Mark, Raspisanie, Feedback, ResetPassword
 
 
 @admin.register(Group)
@@ -56,3 +56,4 @@ admin.site.register(Student)
 admin.site.register(Mark)
 admin.site.register(Raspisanie, RaspisanieAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
+admin.site.register(ResetPassword)
